@@ -1,4 +1,4 @@
-# Primitive.js
+# Primitive.js ![Build status for master branch][5]
 
 Primitive is an implementation of an Object-based inheritance pattern,
 inspired in parts by patterns in [Backbone.js][1] and [this excellent treatise
@@ -67,3 +67,4 @@ grunt watch
 [2]: http://davidwalsh.name/javascript-objects
 [3]: http://wiki.ecmascript.org/doku.php?id=strawman:maximally_minimal_classes
 [4]: http://jsperf.com/inheritance-pattern-sandbox
+[5]: https://circleci.com/gh/cdata/primitive.js.png?circle-token=cdd6dd33c695fe17a41086e9ed94710d538f8ff3
