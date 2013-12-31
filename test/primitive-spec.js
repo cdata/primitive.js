@@ -37,6 +37,68 @@
           });
         });
 
+        describe('with a function argument', function () {
+          it('calls the function with the Primitive as the first argument', function () {
+            Primitive.extend(function (Super) {
+              expect(Super).to.be(Primitive);
+            });
+          });
+
+          it('sets the function context to to-be-defined "class"', function () {
+            var Context;
+            var Child = Primitive.extend(function () {
+              Context = this;
+            });
+
+            expect(Context).to.be(Child);
+          });
+
+          it('facilitates calls to "super" methods', function () {
+            var Child = Primitive.extend(function (Super) {
+              return {
+                method: function () {
+                  expect(Super).to.be(Primitive);
+                  return 1;
+                }
+              };
+            });
+
+            var GrandChild = Child.extend(function (Super) {
+              return {
+                method: function () {
+                  expect(Super).to.be(Child);
+                  return 2 + Super.method.call(this);
+                }
+              };
+            });
+
+            var GreatGrandChild = GrandChild.extend(function (Super) {
+              return {
+                method: function () {
+                  expect(Super).to.be(GrandChild);
+                  return 3 + Super.method.call(this);
+                }
+              };
+            });
+
+            expect(GreatGrandChild.create().method()).to.be(6);
+          });
+
+          describe('that returns an object', function () {
+            it('instantiates an extended copy of Primitive', function () {
+              var Extended = Primitive.extend(function () {
+                return {
+                  method: function () {
+                    return true;
+                  }
+                };
+              });
+
+              expect(Extended.method).to.be.a('function');
+            });
+          });
+        });
+
         describe('with an object argument', function () {
           it('instantiates an extended copy of Primitive', function () {
             var Extended = Primitive.extend({

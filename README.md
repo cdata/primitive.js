@@ -12,17 +12,35 @@ Primitive adopts Kyle's 'objects all the way down' philosophy, dropping
 classical prototype-based inheritance hierarchies in favor of a purely
 Object-based approach.
 
-New classes are defined with ``#extend``:
+New classes are defined with ``#extend``. Use a traditional syntax:
 
 ```javascript
 var MyClass = Primitive.extend({
-  init: function(name) {
+  init: function (name) {
     // will be called upon creation..
     this.name = name;
   },
-  someMethod: function() {
+  someMethod: function () {
     return true;
   }
+});
+```
+
+Or a more functional one:
+
+```javascript
+var MySubClass = MyClass.extend(function (Super) {
+  var privateMemberName;
+
+  return {
+    init: function (name) {
+      privateMemberName = name;
+    },
+    someMethod: function () {
+      // Super is a reference to MyClass
+      return Super.someMethod.call(this);
+    }
+  };
 });
 ```
 
