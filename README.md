@@ -68,7 +68,7 @@ test][4] when proposing modifications to Primitive's internal strategies.
 ### Requirements
 
 ```sh
-grunt install -g mocha
+npm install -g grunt-cli
 npm install
 ```
 
