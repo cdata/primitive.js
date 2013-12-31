@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "An ES6-ready, Object-based inheritance pattern.",
   "scripts": {
-    "test": "karma run"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
