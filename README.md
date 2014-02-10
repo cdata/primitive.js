@@ -30,11 +30,11 @@ Or a more functional one:
 
 ```javascript
 var MySubClass = MyClass.extend(function (Super) {
-  var privateMemberName;
+  var privateStaticValue = 10;
 
   return {
     init: function (name) {
-      privateMemberName = name;
+      this.name = name;
     },
     someMethod: function () {
       // Super is a reference to MyClass

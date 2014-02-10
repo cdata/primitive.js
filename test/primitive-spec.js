@@ -110,6 +110,34 @@
             expect(Extended).to.be.an('object');
             expect(Extended.method).to.be.a('function');
           });
+
+          describe('that has a non-trivial prototype chain', function () {
+            it('only extends with "own" properties of the object', function () {
+              function Clazz () {
+                'clazz constructor';
+              }
+
+              function SubClazz () {
+                'subclazz constructor';
+              }
+
+              Clazz.prototype.method = function() {
+                'clazz method';
+              };
+
+              SubClazz.prototype = Object.create(Clazz.prototype);
+              SubClazz.prototype.constructor = SubClazz;
+
+              SubClazz.prototype.otherMethod = function() {
+                'subclazz method';
+              };
+
+              var Extended = Primitive.extend(SubClazz.prototype);
+
+              expect(Extended.otherMethod).to.be.a('function');
+              expect(Extended.method).to.be(undefined);
+            });
+          });
         });
       });
     });
