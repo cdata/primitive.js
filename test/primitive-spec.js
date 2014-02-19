@@ -7,14 +7,14 @@
       expect(Primitive).to.be.an('object');
     });
 
-    describe('#create', function () {
+    describe('#new', function () {
       it('is defined', function () {
-        expect(Primitive.create).to.be.a('function');
+        expect(Primitive.new).to.be.a('function');
       });
 
       describe('when called', function () {
         it('instantiates a copy of Primitive', function () {
-          var instance = Primitive.create();
+          var instance = Primitive.new();
 
           expect(instance).to.be.an('object');
           expect(instance.isA(Primitive)).to.be(true);
@@ -81,7 +81,7 @@
               };
             });
 
-            expect(GreatGrandChild.create().method()).to.be(6);
+            expect(GreatGrandChild.new().method()).to.be(6);
           });
 
           describe('that returns an object', function () {
@@ -157,7 +157,7 @@
         describe('with an object argument', function () {
           describe('that is an ancestor of the context', function () {
             it('returns true', function () {
-              var instance = Primitive.create();
+              var instance = Primitive.new();
 
               expect(instance.isA(Primitive)).to.be(true);
             });

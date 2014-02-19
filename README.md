@@ -44,10 +44,10 @@ var MySubClass = MyClass.extend(function (Super) {
 });
 ```
 
-Use ``#create`` to instantiate. Arguments are forwarded to ``#init``:
+Use ``#new`` to instantiate. Arguments are forwarded to ``#init``:
 
 ```javascript
-var anInstance = MyClass.create('foo');
+var anInstance = MyClass.new('foo');
 ```
 
 Reflection is available with ``#isA``:
